@@ -19,17 +19,4 @@ router.get('/tips/:name/tips', function (req, res, next) {
   })
 })
 
-router.get('/tips/create', function (req, res, next) {
-  Category.findOne({}, (err, category) => {
-    let tip = new Tip({
-    	name: 'Volumes are awesome',
-    	categories: [category._id]
-    })
-    tip.save((err, tip) => {
-      if (err) res.json(err, 500)
-      res.json(tip)
-    })
-  })
-})
-
 export default router

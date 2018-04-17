@@ -1,8 +1,16 @@
 import mongoose, { Schema } from 'mongoose'
+import Category from './category'
 
 var TipSchema = new Schema({
-	name: String,
-	categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }]
+	text: String,
+	title: {
+		type: String,
+		required: true
+	},
+	categories: {
+		type: [String],
+		require: true
+	}
 })
 
 var Tip = mongoose.model('Tip', TipSchema);

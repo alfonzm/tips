@@ -12,12 +12,14 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "cross-env": "^5.0.1",
     "dotenv": "^5.0.1",
     "express": "^4.15.3",
     "express-session": "^1.15.6",
+    "lodash": "^4.17.5",
     "mongoose": "^5.0.14",
     "morgan": "^1.9.0",
     "nuxt": "^1.0.0-rc3",

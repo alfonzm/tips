@@ -1,8 +1,7 @@
 <template>
   <section class="container">
-    <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
     <h1 class="title">
-      USERS
+      hello world
     </h1>
     <ul class="users">
       <li v-for="(user, index) in users" :key="index" class="user">
@@ -19,7 +18,7 @@ import axios from '~/plugins/axios'
 
 export default {
   async asyncData () {
-    let { data } = await axios.get('/api/users')
+    let { data } = await axios.get('/api/categories')
     return { users: data }
   },
   head () {
