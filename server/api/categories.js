@@ -26,17 +26,17 @@ router.get('/categories/:name', function (req, res, next) {
 })
 
 // GET tips of category
-router.get('/categories/:name/tips', function (req, res, next) {
-  const name = req.params.name
-  Category.findOne({ name: name }).populate('tips').exec((err, category) => {
-    if (err) { res.send(err) }
-  	if (!category) {
-  		res.sendStatus(404)
-  	} else {
-	    res.json(category)
-  	}
-  })
-})
+// router.get('/categories/:name/tips', function (req, res, next) {
+//   const name = req.params.name
+//   Category.findOne({ name: name }).populate('tips').exec((err, category) => {
+//     if (err) { res.send(err) }
+//   	if (!category) {
+//   		res.sendStatus(404)
+//   	} else {
+// 	    res.json(category)
+//   	}
+//   })
+// })
 
 // router.get('/categories/seed', function (req, res, next) {
 //   let c = new Category({ name: 'volume' })

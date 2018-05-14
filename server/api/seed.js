@@ -6,12 +6,14 @@ import Tip from '../models/tip'
 const router = Router()
 
 // GET all catgories
-router.get('/seed/:type', function (req, res, next) {
+router.get('/seed/:type', async function (req, res, next) {
 	if(req.params.type == 'tips') {
+		await Tip.remove({})
 		const tips = [
 		{
 			title: 'breakouts need a volume spike',
-			categories: ['volume', 'breakouts']
+			categories: ['volume', 'breakouts'],
+			text: 'breakouts need a volume spike breakouts need a volume spike breakouts need a volume spike breakouts need a volume spike'
 		},
 		{
 			title: 'volume is awesome',
@@ -19,7 +21,8 @@ router.get('/seed/:type', function (req, res, next) {
 		},
 		{
 			title: 'low volume on uptrend pullback is healthy pullback',
-			categories: ['volume', 'trends']
+			categories: ['volume', 'trends'],
+			text: 'low volume on uptrend pullback is healthy pullbacklow volume on uptrend pullback is healthy pullbacklow volume on uptrend pullback is healthy pullbacklow volume on uptrend pullback is healthy pullbacklow volume on uptrend pullback is healthy pullbacklow volume on uptrend pullback is healthy pullback'
 		},
 		{
 			title: 'stock is uptrend when price is above the MAs',

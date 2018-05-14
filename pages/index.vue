@@ -1,33 +1,31 @@
-<template>
-  <section class="container">
-    <h1 class="title">
-      hello world
-    </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="index" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
+<template lang="pug">
+  section.container
+    h2.title hello world
+    ul
+      li(v-for="(category, index) in categories" :key="index")
+        nuxt-link(:to="'/categories/' + category.name") {{ category.name }}
 </template>
 
 <script>
 import axios from '~/plugins/axios'
+import slug from 'slug'
 
 export default {
+  mounted () {
+  },
   async asyncData () {
     let { data } = await axios.get('/api/categories')
-    return { users: data }
+    return { categories: data }
   },
-  head () {
-    return {
-      title: 'Users'
+  methods: {
+    slug: (string) => {
+      return slug(string)
     }
   }
+  // head () {
+  //   return {
+  //     title: 'Categories'
+  //   }
+  // }
 }
 </script>
-
-<style scoped>
-</style>
