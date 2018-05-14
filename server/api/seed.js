@@ -9,9 +9,10 @@ const router = Router()
 router.get('/seed/:type', async function (req, res, next) {
 	if(req.params.type == 'tips') {
 		await Tip.remove({})
+		await Category.remove({})
 		const tips = [
 		{
-			title: 'breakouts need a volume spike',
+			title: 'breakouts need a volume spike long qwe asd dfg jklqwe asdqwe',
 			categories: ['volume', 'breakouts'],
 			text: 'breakouts need a volume spike breakouts need a volume spike breakouts need a volume spike breakouts need a volume spike'
 		},
@@ -32,6 +33,10 @@ router.get('/seed/:type', async function (req, res, next) {
 			title: 'trends can be upward, downward or sideways',
 			categories: ['trends']
 		},
+		{
+			title: 'alignment of the stars is when ma20 > ma50 > ma100',
+			categories: ['moving average']
+		}
 		]
 		Tip.create(tips, (err, tips) => {
 			// Create categories

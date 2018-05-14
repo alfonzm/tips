@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import Category from '../models/category'
+import Tip from '../models/tip'
 
 const router = Router()
 
@@ -13,14 +14,16 @@ router.get('/categories', function (req, res, next) {
 })
 
 // GET single category
-router.get('/categories/:name', function (req, res, next) {
-  const name = req.params.name
-  Category.findOne({ name: name }, (err, category) => {
+router.get('/categories/:slug', function (req, res, next) {
+  Category.findOne(req.params, (err, category) => {
   	if (err) { res.send(err) }
   	if (!category) {
   		res.sendStatus(404)
   	} else {
-	    res.json(category)
+      Tip.find({ categories: category.name }, (err, tips) => {
+        category.tips = tips
+  	    res.json(category)
+      })
   	}
   })
 })

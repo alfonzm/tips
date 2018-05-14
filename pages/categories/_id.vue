@@ -1,8 +1,9 @@
 <template lang="pug">
   section.container
-    h2.title tag
+    h2.title category: {{ category.name }}
     ul
-      li(v-for="(tip, index) in tips" :key="index") {{ tip.title }}
+      li(v-for="(tip, index) in category.tips" :key="index")
+        nuxt-link(:to="'/tips/' + tip.slug") {{ tip.title }}
 </template>
 
 <script>
@@ -12,8 +13,10 @@ export default {
   mounted () {
   },
   async asyncData ({ params }) {
-    let { data } = await axios.get('/api/tips', { params: { categories: params.id } })
-    return { tips: data }
+    const category = await axios.get('/api/categories/' + params.id)
+    return {
+      category: category.data
+    }
   }
 }
 </script>

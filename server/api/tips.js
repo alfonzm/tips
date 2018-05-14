@@ -11,10 +11,9 @@ router.get('/tips', function (req, res, next) {
   })
 })
 
-// GET tips of Tip
-router.get('/tips/:name/tips', function (req, res, next) {
-  const name = req.params.name
-  Tip.find({}, (err, categories) => {
+// GET tip data
+router.get('/tips/:id', function (req, res, next) {
+  Tip.find({ _id: req.params.id }, (err, categories) => {
     res.json(categories)
   })
 })
